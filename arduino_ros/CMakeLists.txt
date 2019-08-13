@@ -6,6 +6,8 @@ project(arduino_ros)
 find_package(catkin REQUIRED COMPONENTS message_generation std_msgs rospy roscpp)
 ## 메시지 선언: arduino.msg
 add_message_files(FILES arduino.msg)
+add_message_files(FILES button.msg)
+
 
 ## 의존하는 메시지를 설정하는 옵션이다.
 ## std_msgs가 설치되어 있지 않다면 빌드 도중에 에러가 난다.
@@ -29,6 +31,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 
 ## topic_subscriber 노드에 대한 빌드 옵션이다.
 ## 실행 파일, 타깃 링크 라이브러리, 추가 의존성 등을 설정한다.
+##아두이노 센서값 subscribe
 add_executable(arduino_sensor src/arduino_sensor.cpp)
 add_dependencies(arduino_sensor ${${PROJECT_NAME}_EXPORTED_TARGETS}
 ${catkin_EXPORTED_TARGETS})
